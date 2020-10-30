@@ -1,10 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import Chat from "./Chat.js";
+import Main from "./Main.js";
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello, Chat!</h1>
+     <Main />
+     <Chat />
+
+
     </div>
   );
 }

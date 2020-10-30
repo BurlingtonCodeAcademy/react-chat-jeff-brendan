@@ -14,6 +14,8 @@ app.use(express.static(staticDir));
 const MessageStore = require("./data.js");
 let myDb = new MessageStore(`mongodb+srv://BCAadmin:${process.env.DBPASS}@cluster0.npdxy.mongodb.net/test?retryWrites=true&w=majority`, "library", "inventory");
 
+const DataStore = require('./data.js')
+let ourDb = new DataStore(`mongodb+srv://BCAadmin:${process.env.DBPASS}@cluster0.npdxy.mongodb.net/test?retryWrites=true&w=majority`, "library", "inventory")
 //routes
 
 
@@ -25,14 +27,19 @@ app.get("/allrecords", async (req, res) => {
 
 //show all records
 app.get("/allrecords", async (req, res) => {
-  res.sendFile(path.resolve("./public/placeholder.html"))
+  res.sendFile(path.resolve("./src/placeholder.html"))
 })
 
 
 //need api endpoint for serving a single file from homepage main chat
-app.get('/placeholder/:id', (req, res) => {
+app.get('/placeholder/:id', async (req, res) => {
   let record = await myDb.showOne(req.params.id)
   res.send(record)
+})
+
+//Path to App.js - This is not working yet
+app.get('*', async (req, res) => {
+  res.sendFile(path.resolve(staticDir))
 })
 
 //require an api endpoint for serving all the files in side chat
