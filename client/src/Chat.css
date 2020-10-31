@@ -53,13 +53,13 @@
 	padding: 10px 0;
 }
 
-.chat-messages {
+#chat-messages {
 	padding: 30px;
 	max-height: 500px;
 	overflow-y: scroll;
 }
 
-.chat-messages .message {
+#chat-messages .message {
 	padding: 10px;
 	margin-bottom: 15px;
 	background-color: var(--light-color);
@@ -67,7 +67,7 @@
 	overflow-wrap: break-word;
 }
 
-.chat-messages .message .meta {
+#chat-messages .message .meta {
 	font-size: 15px;
 	font-weight: bold;
 	color: var(--dark-color-b);
@@ -75,7 +75,7 @@
 	margin-bottom: 7px;
 }
 
-.chat-messages .message .meta span {
+#chat-messages .message .meta span {
 	color: #777;
 }
 

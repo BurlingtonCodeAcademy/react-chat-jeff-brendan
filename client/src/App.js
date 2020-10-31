@@ -1,9 +1,8 @@
-import './App.css';
 import Chat from "./Chat.js";
 import Main from "./Main.js";
 
 
-function App() {
+function App(props) {
   return (
     <div className="App">
      <Main />

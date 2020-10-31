@@ -1,5 +1,32 @@
-import React from 'react'
+import React from 'react' 
+import ReactDOM from 'react-dom'
 import "./Chat.css"
+
+
+
+
+function fetchAllData() {
+  fetch("./allrecords").then((res) => {
+    return res.json();
+  }).then((jsonObj) => {
+    console.log(jsonObj);
+    jsonObj.forEach((id) => {
+      let userMsg = id;
+      let message = userMsg.DbBody
+      let author = userMsg.DbAuthor
+      let msgtime = userMsg.DbWhen
+      const msgList =  message.map(`<li>${message}</li>`)
+      
+      
+
+      // console.log(msgList)
+      // ReactDOM.render(msgList, document.getElementById('chat-messages'))    
+      document.getElementsById('chat-messages').apppendChild(msgList)
+    })
+  })
+}
+fetchAllData()
+
 function Chat() {
     return (
         <div>
@@ -19,7 +46,7 @@ function Chat() {
               <li>Jeff</li>
           </ul>
         </div>
-        <div className="chat-messages"></div> {/*This is were the msg should be displayed */}
+        <ul id="chat-messages"></ul> {/*This is were the msg should be displayed */}
       </main>
       <div className="chat-form-container"> {/*This is the form input for the chat  */}
         <form id="chat-form">
@@ -38,3 +65,4 @@ function Chat() {
     )
 }
 export default Chat
+

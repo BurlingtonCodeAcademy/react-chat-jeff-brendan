@@ -21,22 +21,7 @@ class MessageStore {
     this.DbAuthor = DbAuthor;
   }
 }
-//---------------------------OLD LOGIC---------------------------------//
 
-// //logic for viewing
-// if (question === "view") {
-//  await collection.find({}).forEach((records) => {
-//    console.log(records);
-//  });
-// } else if (question === "add") {
-//  let recordsBody = await ask("What are you wanting to say? ");
-//  let recordsName = await ask("Who are you? ");
-
-//  await collection.insertOne({
-//    DbBody: recordsBody,
-//    DbAuthor: recordsName,
-//    DbWhen: timeStamp
-//  });
 
 //---------------------------NEW LOGIC---------------------------------//
 class DataStore {
