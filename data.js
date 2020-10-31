@@ -36,32 +36,6 @@ class MessageStore {
 //    DbAuthor: recordsName,
 //    DbWhen: timeStamp
 //  });
-// } else if (question === 'delete') {
-//    await collection.find({}).forEach(records => {
-//        console.log(records.DbAuthor + ':')
-//        console.log(records._id)
-//        // how do we console log time stamp here 
-//    })
-//    let target = await ask('Which record are you trying to delete? ')
-//    let id = ObjectId(target.trim())
-
-//    await collection.deleteOne({_id: id})
-
-// } else if (question === "update") {
-//  await collection.find({}).forEach((records) => {
-//    console.log(records.DbAuthor + ":");
-//    console.log(records._id);
-//  });
-//  //target question- sets the answer to target variable
-//  let updateTarget = await ask("What are you trying to update?");
-//  //maybe dont have them ask by id
-//  //but use Id for now
-//  let id = ObjectId(updateTarget.trim());
-//  let field = await ask("Which field?");
-//  //inputs new value
-//  let update = await ask(`What is the new value for ${field}? `);
-//  await collection.updateOne({ _id: id }, { $set: { [field]: update } });
-// }
 
 //---------------------------NEW LOGIC---------------------------------//
 class DataStore {
@@ -100,13 +74,24 @@ async run() {
   }
 
   // SENDING A MESSAGE
-  async sendMessage(msg) {
-    let collection = await this.collection()
-    let result = await collection.insertOne(msg)
-      //    DbBody: recordsBody,
-      //    DbAuthor: recordsName,
-      //    DbWhen: timeStamp
-      //  });
+  async addMessage(message) {
+    //defines an object called response
+    let response = { status: null, error: null };
+    //try catch block
+    try {
+      let collection = await db.collection(this.dbCollection);
+      console.log("adding item");
+      await collection.insertOne(message);
+      console.log("Success on message");
+      //status to terminal
+      response.status = "ok";
+      //else catch the errora
+    } catch (error) {
+      response.error = error.toString();
+      console.log(error.toString());
+    }
+    //returns object defined at top
+    return response;
   }
 
   //DELETE A MESSAGE

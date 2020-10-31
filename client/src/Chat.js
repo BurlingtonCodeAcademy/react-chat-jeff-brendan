@@ -15,7 +15,7 @@ function Chat() {
           <h3>Users</h3>
           <ul id="users"> {/*Delete the list bellow, here is were it goes the name off the person that login into the page */}
               <li>Matheus</li>
-              <li>Bredan</li>
+              <li>Brendan</li>
               <li>Jeff</li>
           </ul>
         </div>
