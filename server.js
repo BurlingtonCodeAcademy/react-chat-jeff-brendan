@@ -7,6 +7,7 @@ const app = express();
 const staticDir = process.env.DEV ? "./client/public" : "./client/build";
 app.use(bodyParser.json());
 app.use(bodyParser.raw());
+
 //middleware
 app.use(express.urlencoded({ extended: true }));
 //app.use(express.static("./public"))    <---- do we need this?
@@ -20,7 +21,7 @@ let ourDb = new DataStore(
   "Records"
 );
 
-//routes
+
 
 //set up an API endpoint that reads from database, and shows all results in connection
 app.get("/allrecords", async (req, res) => {
@@ -63,6 +64,7 @@ app.post("/entry", async (req, res) => {
 // need to rewrite how we define our Database obj 
 // 
 
+// this is our listener and lets you know in console if the server is live
 app.listen(port, () => {
   console.log("listening on port: " + port);
 });

@@ -1,7 +1,9 @@
-import React from "react";
+// importing React and CSS 
+import React, {useState}  from "react";
 import "./Chat.css";
+ 
 
-
+// this function generates a a message as a list item 
 function ChatItem({ message }) {
   return (
     <li>
@@ -9,7 +11,7 @@ function ChatItem({ message }) {
     </li>
   );
 }
-
+// this is the template message component
 class ChatMessage extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,7 @@ class ChatMessage extends React.Component {
       messages: [],
     };
   }
-
+// this fetchs data from all records
   render() {
     setInterval(() => {
       fetch("./allrecords")
@@ -27,8 +29,8 @@ class ChatMessage extends React.Component {
         .then((jsonObj) => {
           this.setState({ messages: jsonObj });
         });
-    }, 15000);
-
+    }, 15000);    // <--- we are refreshing the loop every 15 seconds 
+//then returns the data as an unorder list
     return (
       <ul id="chat-messages">
         {this.state.messages.map((message1) => (
@@ -38,7 +40,7 @@ class ChatMessage extends React.Component {
     );
   }
 }
-
+// this function generates our html for our chat 
 function Chat() {
   return (
     <div>
@@ -85,4 +87,5 @@ function Chat() {
     </div>
   );
 }
+//exporting chat as a component 
 export default Chat;

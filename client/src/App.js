@@ -1,5 +1,5 @@
-import Chat from "./Chat.js";
-import Main from "./Main.js";
+import Chat from "./Chat/Chat.js";
+import Main from "./main/Main.js";
 
 
 function App(props) {

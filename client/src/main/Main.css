@@ -11,7 +11,7 @@
       --success-color: #5cb85c;
       --error-color: #d9534f;
   }
-
+/* Beginning  of our main React Chat title */
   .join-container {
     max-width: 500px;
     margin: 80px auto;
@@ -27,12 +27,12 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
-
+/* Main body of username and room sign in */
   .join-main {
     padding: 30px 40px;
     background: var(--dark-color-b);
   }
-
+/* just adding margin below to make it display nicely */
   .join-main p {
     margin-bottom: 20px;
   }

@@ -14,6 +14,7 @@ let time = new Date();
 // breaks down the current date by hours/minutes/seconds
 let timeStamp =
   time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+  // this is our Record obj template
 class MessageStore {
   constructor(DbBody, DbAuthor) {
     this.DbWhen = timeStamp;
@@ -31,6 +32,7 @@ class DataStore {
     this.dbCollection = dbCollection;
     this.dbClient = null;
   }
+  //-- this async connects our server 
   async run() {
     console.log("serving on " + this.dbURL);
     if (this.dbClient && this.dbClient.isConnected()) {
@@ -43,6 +45,7 @@ class DataStore {
       return this.dbClient;
     }
   }
+  //How we connect to our database 
   async collection() {
     // connect to mongo process
     const client = await this.run();
