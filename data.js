@@ -67,7 +67,7 @@ class DataStore {
     let response = { status: null, error: null };
     //try catch block
     try {
-      let collection = await db.collection(this.dbCollection);
+      let collection = await this.collection();
       console.log("adding item");
       await collection.insertOne(message);
       console.log("Success on message");

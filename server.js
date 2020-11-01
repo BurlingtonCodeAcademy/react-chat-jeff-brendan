@@ -1,11 +1,12 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 8000;
 const app = express();
 const staticDir = process.env.DEV ? "./client/public" : "./client/build";
-
-
+app.use(bodyParser.json());
+app.use(bodyParser.raw());
 //middleware
 app.use(express.urlencoded({ extended: true }));
 //app.use(express.static("./public"))    <---- do we need this?
@@ -46,7 +47,12 @@ app.get("*", async (req, res) => {
 });
 
 //insert message to home page
-
+app.post("/entry", async (req, res) => {
+  let submission = req.body;
+  console.log(submission);
+  ourDb.addMessage(submission);
+  res.send("Form submitted successfully");
+});
 
 //require an api endpoint for serving a single file from side chat
 
