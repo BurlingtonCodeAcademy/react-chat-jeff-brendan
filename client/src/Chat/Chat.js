@@ -30,16 +30,23 @@ class ChatMessage extends React.Component {
           this.setState({ messages: jsonObj });
         });
     }, 15000);    // <--- we are refreshing the loop every 15 seconds 
-//then returns the data as an unorder list
+//then returns the data as an unordered list
     return (
       <ul id="chat-messages">
         {this.state.messages.map((message1) => (
           <ChatItem message={message1} />
         ))}
-      </ul>
+      </ul>, []
     );
   }
 }
+// trying to bring in useState
+//const [] = useState()
+
+//function sendData() {
+  
+//}
+
 // this function generates our html for our chat 
 function Chat() {
   return (
@@ -71,8 +78,8 @@ function Chat() {
         <div className="chat-form-container">
           {" "}
           {/*This is the form input for the chat  */}
-          <form id="chat-form">
-            <input
+          <form id="chat-form" method="POST" action="/post-feedback">
+            <input name="nameBody"
               id="msg"
               type="text"
               placeholder="Enter Message"
